@@ -1,2 +1,0 @@
-# pulao
-pulao
