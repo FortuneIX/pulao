@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+        }
+
+        #dvd-screen {
+            width: 100px;
+            height: 50px;
+            background-color: #3498db;
+            position: absolute;
+            top: 0;
+            left: 0;
+            border-radius: 5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-family: Arial, sans-serif;
+            font-size: 12px;
+        }
+    </style>
+    <title>DVD Screensaver</title>
+</head>
+<body>
+    <div id="dvd-screen"></div>
+    <script>
+        const dvdScreen = document.getElementById('dvd-screen');
+
+        let x = 0;
+        let y = 0;
+        let dx = 2;
+        let dy = 2;
+
+        function moveDVD() {
+            x += dx;
+            y += dy;
+
+            // Reverse direction if hitting the edges
+            if (x + dvdScreen.offsetWidth > window.innerWidth || x < 0) {
+                dx = -dx;
+            }
+
+            if (y + dvdScreen.offsetHeight > window.innerHeight || y < 0) {
+                dy = -dy;
+            }
+
+            dvdScreen.style.left = `${x}px`;
+            dvdScreen.style.top = `${y}px`;
+
+            requestAnimationFrame(moveDVD);
+        }
+
+        moveDVD();
+    </script>
+</body>
+</html>
